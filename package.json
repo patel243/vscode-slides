@@ -1,0 +1,87 @@
+{
+  "name": "vscode-slides",
+  "displayName": "VSCode Slides",
+  "publisher": "KoushikKothagal",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-slides.startSlideShow"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Configuration Samples",
+        "properties": {
+          "conf.view.cssStyles": {
+            "type": "object",
+            "default": {},
+            "description": "Styling to add to the slides",
+            "scope": "resource"
+          },
+          "conf.presentation.staggerBullets": {
+            "type": "boolean",
+            "default": true,
+            "description": "Make list items show one at a time",
+            "scope": "window"
+          }
+        }
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "slideControls",
+          "name": "Slide Controls"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vscode-slides.advanceSlide",
+        "title": "Next Slide"
+      },
+      {
+        "command": "vscode-slides.prevSlide",
+        "title": "Prev Slide"
+      },
+      {
+        "command": "vscode-slides.startSlideShow",
+        "title": "Start Slide Show"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.55.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "@types/cheerio": "^0.22.28",
+    "@types/marked": "^2.0.1",
+    "cheerio": "^1.0.0-rc.6",
+    "marked": "^2.0.1"
+  }
+}
